@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+    include Response 
+
     before_action :authenticate_user_from_token!
     before_action :authenticate_user!
 
@@ -20,16 +22,18 @@ class ApplicationController < ActionController::API
     #     sign_in user, store: false
     #     end
     # end
+
     def authenticate_user_from_token!
-        auth_token = params[Devise.token_authentication_key]
-        if auth_token
-          t = Time.now
-          if (user = User.where(authentication_token: auth_token).first)
+      auth_token = params[Devise.authentication_keys]
+      if auth_token
+        t = Time.now 
+        if (user = User.where(authentication_token: auth_token).first)
             sign_in user, store: false
-          else
-            # ensure requests with a failed token match are quantised to 200ms
-            sleep((200 - Time.now + t) % 200) / 1000.0)
-          end
+        else
+          # ensure requests with a failed token match are quantised to 200ms
+          sleep((200 - (Time.now + t) % 200)  / 1000.0)
         end
+      end
+      
     end
 end
