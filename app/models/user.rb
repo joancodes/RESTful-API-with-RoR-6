@@ -11,8 +11,6 @@ class User < ApplicationRecord
       self.authentication_token = generate_authentication_token
     end
   end
-
-  private
   
   def generate_authentication_token
     loop do
@@ -20,5 +18,5 @@ class User < ApplicationRecord
       break token unless User.where(authentication_token: token).first
     end
   end
-
+  
 end
