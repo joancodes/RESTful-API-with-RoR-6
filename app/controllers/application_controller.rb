@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
     include Response 
+    include Authenticate
 
     before_action :authenticate_user_from_token!
 
