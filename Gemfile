@@ -10,6 +10,9 @@ ruby '2.6.0'
 # Devise is a flexible authentication solution for Rails based on Warden
 gem 'devise', '~> 4.2'
 
+# A lightweight Facebook library supporting the Graph, Marketing, and Atlas APIs, realtime updates, test users, and OAuth.
+gem "koala"
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
