@@ -13,6 +13,8 @@ gem 'devise', '~> 4.2'
 # A lightweight Facebook library supporting the Graph, Marketing, and Atlas APIs, realtime updates, test users, and OAuth.
 gem "koala"
 
+# This gem is a port of Perl's Data::Faker library that generates fake data.
+gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
