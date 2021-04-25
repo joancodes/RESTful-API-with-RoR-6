@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :reviews       
   before_save :ensure_authentication_token
 
   def ensure_authentication_token
