@@ -5,11 +5,13 @@ class Api::V1::ReviewsController < ApplicationController
 
     def index
         @reviews = @book.reviews
-        json_response "Index reviews successfully", true, {reviews: @reviews}, :ok
+        reviews_serializer = parse_json @reviews
+        json_response "Index reviews successfully", true, {reviews: reviews_serializer}, :ok
     end 
 
     def show 
-        json_response "Show review successfully", true, {reviews: @review}, :ok
+        reviews_serializer = parse_json @review
+        json_response "Show review successfully", true, {reviews: reviews_serializer}, :ok
     end 
 
     def create
@@ -17,7 +19,8 @@ class Api::V1::ReviewsController < ApplicationController
         review.user_id = current_user.id
         review.book_id = params[:book_id]
         if review.save
-            json_response "Created Review Successfully", true, {review: review}, :ok
+            reviews_serializer = parse_json review
+            json_response "Created Review Successfully", true, {review: reviews_serializer}, :ok
         else
             json_response "Create Review Failed", false, {}, :unprocessable_entity
         end
@@ -26,7 +29,8 @@ class Api::V1::ReviewsController < ApplicationController
     def update 
         if correct_user @review.user
             if @review.update review_params
-                json_response "Update Review Successfully", true, {review: @review}, :ok
+                reviews_serializer = parse_json @review
+                json_response "Update Review Successfully", true, {review: reviews_serializer}, :ok
             else
                 json_response "Updating Review Failed", false, {}, :unprocessable_entity
             end
@@ -38,7 +42,8 @@ class Api::V1::ReviewsController < ApplicationController
     def destroy 
         if correct_user @review.user
             if @review.destroy
-                json_response "Deleted Review Successfully", true, {review: @review}, :ok
+                reviews_serializer = parse_json @review
+                json_response "Deleted Review Successfully", true, {review: reviews_serializer}, :ok
             else
                 json_response "Deleting Review Failed", false, {}, :unprocessable_entity
             end

@@ -16,6 +16,9 @@ gem "koala"
 # This gem is a port of Perl's Data::Faker library that generates fake data.
 gem 'faker'
 
+# ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
+gem "active_model_serializers"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use sqlite3 as the database for Active Record

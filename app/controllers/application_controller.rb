@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
     include Response 
     include Authenticate
+    include SerializableResource
 
     before_action :authenticate_user_from_token!
 
