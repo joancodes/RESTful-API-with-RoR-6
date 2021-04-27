@@ -19,6 +19,9 @@ gem 'faker'
 # ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
 gem "active_model_serializers"
 
+# Turbo-charged counter caches for your Rails app
+gem 'counter_culture', '~> 2.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use sqlite3 as the database for Active Record
